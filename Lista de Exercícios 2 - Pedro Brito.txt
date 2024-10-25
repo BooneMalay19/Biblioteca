@@ -1,0 +1,90 @@
+Lista de Exercícios 2 - Pedro Brito de Souza / RGM: 35996609
+
+
+1-Escreva um algoritmo que calcule um número de Fibonacci.
+
+import java.util.Scanner;
+
+public class Calculo_de_Fibonacci {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite o índice de Fibonacci: ");
+        int n = scanner.nextInt();
+        System.out.println("Fibonacci de " + n + " é: " + fibonacci(n));
+    }
+
+    public static int fibonacci(int n) {
+        if (n <= 0) {
+            return 0;
+        } else if (n == 1) {
+            return 1;
+        } else {
+            return fibonacci(n - 1) + fibonacci(n - 2);
+        }
+    }
+}
+
+
+2-Escreva um algoritmo que calcule o n-ésimo fatorial.
+
+import java.util.Scanner;
+
+public class Nnésimo {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite um número inteiro (não negativo) para calcular o fatorial: ");
+        int n = scanner.nextInt();
+        if (n < 0) {
+            System.out.println("O número deve ser não negativo.");
+        } else {
+            System.out.println(" O Fatorial de " + n + " é: " + fatorial(n));
+        }
+    }
+
+    public static long fatorial(int n) {
+        if (n == 0 || n == 1) {
+            return 1;
+        }
+        long resultado = 1;
+        for (int i = 2; i <= n; i++) {
+            resultado *= i;
+        }
+        return resultado;
+    }
+}
+
+
+3-Escreva um algoritmo que recebe as notas de uma turma(quantos alunos o usuário quiser).
+As notas são A1 e A2 de cada aluno. O critério de aprovação é que a nota seja >= 6. Caso a nota esteja entre 4 e < 6, ele terá que realizar AF. Se a nota final for menor que 4, ele está retido. Ao final da execução, exiba o número de aprovados, retidos e AF. Adicione as validações dos parâmetros.
+
+import java.util.Scanner;
+
+public class Notas_Turma {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int aprovados = 0;
+        int retidos = 0;
+        int af = 0;
+        
+        while (true) {
+            System.out.print("Digite a nota A1 do aluno (ou -0 para encerrar): ");
+            double a1 = scanner.nextDouble();
+            if (a1 == -0) break;
+
+            System.out.print("Digite a nota A2 do aluno: ");
+            double a2 = scanner.nextDouble();
+            double media = (a1 + a2) / 2;
+            
+            if (media >= 6) {
+                aprovados++;
+            } else if (media >= 4) {
+                af++;
+            } else {
+                retidos++;
+            }
+        }
+        System.out.println("Número de aprovados: " + aprovados);
+        System.out.println("Número de alunos retidos: " + retidos);
+        System.out.println("Número de alunos na AF: " + af);
+    }
+}
